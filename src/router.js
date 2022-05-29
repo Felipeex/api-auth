@@ -4,4 +4,10 @@ const app = express()
 
 app.use(cors())
 
-app.listen(4000, () => console.log('Api rodando com sucesso 🚀'))
+app.use(express.json())
+
+/* routers */
+import auth from "./routers/auth/index.js"
+app.use('/auth', auth)
+
+app.listen(4000, () => console.log('Api rodando com sucesso! 🚀'))
