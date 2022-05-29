@@ -1,8 +1,10 @@
 import msql from "mysql"
 
-msql.createPool({
+const dbconnection = msql.createPool({
     user: '',
     password: '',
     host: '',
     database: ''
 })
+
+export default { dbconnection }
