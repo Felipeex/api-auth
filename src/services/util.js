@@ -4,4 +4,10 @@ function badResquest(res, err) {
     })
 }
 
-export { badResquest }
+function InternalServerError(res, err) {
+    res.status(500).json({
+        err: err
+    })
+}
+
+export { badResquest, InternalServerError }

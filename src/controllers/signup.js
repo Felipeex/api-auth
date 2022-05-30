@@ -4,7 +4,7 @@ function AuthInformationsValidate(req, res, next) {
     const { email, password } = req.body
 
     if(!email)
-    return badResquest(res, "Email Envalido")
+    return badResquest(res, "Email Invalido")
 
     if(!password)
     return badResquest(res, "Senha Invalida")

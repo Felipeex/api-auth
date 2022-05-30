@@ -1,10 +1,10 @@
 import mysql from "mysql"
 
-const ConnectionDB = mysql.createPool({
-    host: '',
-    database: '',
-    user: '',
-    password: '',
+const DB = mysql.createPool({
+    host: "localhost",
+    database: "auth",
+    user: "root",
+    password: "",
 })
 
-export { ConnectionDB }
+export { DB }
