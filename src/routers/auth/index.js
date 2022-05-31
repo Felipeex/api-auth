@@ -6,7 +6,7 @@ import { AuthInformationsInsert } from "../../models/singup.js"
 import { sucessResquest } from "../../services/util.js"
 
 router.post('/signup', AuthInformationsValidate, AuthVerifyAccontExists, AuthInformationsInsert,  async (req, res) => {
-    sucessResquest(res, "Conta criada com sucesso")
+    sucessResquest(res, "Conta criada com sucesso.")
 })
 
 export default router
