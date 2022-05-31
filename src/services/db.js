@@ -5,6 +5,6 @@ const DB = mysql.createPool({
     database: "auth",
     user: "root",
     password: "",
-})
+}, console.log('Pool MYSQL!'))
 
 export { DB }
