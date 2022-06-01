@@ -13,11 +13,13 @@ Api de autenticação, Para projeito simples. Sistema de register/login.
 Instalar pacotes.
 
 ```sh
-$ npm i
+npm i
 ```
 
 Iniciar projeto com Dev.
 
 ```sh
-$ npm run dev
+npm run dev
+# or
+yarn dev
 ```
