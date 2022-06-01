@@ -1,18 +1,18 @@
-function sucessResquest(res, msg) {
+function sucessResquest(res, message) {
     res.status(200).json({
-        msg
+        message
     })
 }
 
-function badResquest(res, err) {
+function badResquest(res, error) {
     res.status(400).json({
-        err
+        error
     })
 }
 
-function InternalServerError(res, err) {
+function InternalServerError(res, error) {
     res.status(500).send({
-        err
+        error
     })
 }
 
