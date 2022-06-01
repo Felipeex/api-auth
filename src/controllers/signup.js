@@ -1,6 +1,10 @@
-import { badResquest, InternalServerError } from "../services/util.js"
+/* Database */
 import { DB } from "../services/db.js"
 
+/* Tratamento de erros */
+import { badResquest, InternalServerError } from "../services/util.js"
+
+/* Verificar sé a requisição veio com os paramentros preenchidos. */
 function AuthInformationsValidate(req, res, next) {
     const { email, password } = req.body
 
@@ -13,6 +17,7 @@ function AuthInformationsValidate(req, res, next) {
     next()
 }
 
+/* Verificar sé uma conta existe (Email). */
 function AuthVerifyAccontExists(req, res, next) {
     const { email } = req.body
 

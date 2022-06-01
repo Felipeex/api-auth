@@ -14,7 +14,9 @@ Api de autenticação, Para projeito simples. Sistema de register/login.
 Instalar pacotes.
 
 ```sh
-npm i
+npm install
+# or
+yarn install
 ```
 
 Iniciar projeto com Dev.

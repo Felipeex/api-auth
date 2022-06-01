@@ -1,7 +1,13 @@
+/* Database */
 import { DB } from "../services/db.js"
+
+/* Tratamento de erros */
 import { badResquest, InternalServerError } from "../services/util.js"
+
+/* Tokens */
 import bcrypt from "bcrypt"
 
+/* Validar login (Email, Senha). */
 function AuthValidatePassword(req, res, next) {
     const { email, password } = req.body
 
