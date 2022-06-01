@@ -14,7 +14,7 @@ router.post('/signup', AuthInformationsValidate, AuthVerifyAccontExists, AuthInf
 })
 
 router.post('/signin', AuthInformationsValidate, AuthValidatePassword,  async (req, res) => {
-    
+    sucessResquest(res, "Logado com sucesso")
 })
 
 export default router

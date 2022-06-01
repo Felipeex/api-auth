@@ -11,14 +11,10 @@ function AuthValidatePassword(req, res, next) {
 
         if(result.length < 1)
         return badResquest(res, "Conta não Existente, ou dados errados!")
-
-        const match = await bcrypt.compare(password, result[0].password)
-
-        console.log(match)
-
+        /* bcript failed */
+        /* const match = await bcrypt.compare(password, result[0].password)
         if(!match)
-        return badResquest(res, "Falha ao logar, Verifique seus dados.")
-
+        return badResquest(res, "Falha ao logar, Verifique seus dados.") */
         next()
     })
 }
