@@ -14,8 +14,10 @@
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.16"
+    "mysql": "^2.18.1"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
