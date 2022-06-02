@@ -10,8 +10,7 @@ import { sucessResquest } from "../../services/util.js"
 
 /* routers */
 router.post('/signup', AuthInformationsValidate, AuthVerifyAccontExists, AuthInformationsInsert,  async (req, res) => {
-    const { userJWT } = req.body
-    sucessResquest(res, { status: "Conta criada com sucesso.", token: userJWT })
+    sucessResquest(res, "Conta criada com sucesso.")
 })
 
 router.post('/signin', AuthInformationsValidate, AuthValidatePassword,  async (req, res) => {

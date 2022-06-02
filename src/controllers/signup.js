@@ -14,6 +14,8 @@ function AuthInformationsValidate(req, res, next) {
     if(!password)
     return badResquest(res, "Senha Invalida")
 
+    if(email.length >= 25)
+    return badResquest(res, "Email muito extenso")
     next()
 }
 
@@ -25,9 +27,8 @@ function AuthVerifyAccontExists(req, res, next) {
         if(err)
         return InternalServerError(res, err)
 
-        if(result.length !== 0)
+        if(result.length > 0)
         return badResquest(res, "Conta Existente")
-        
         next()
     })
 }
