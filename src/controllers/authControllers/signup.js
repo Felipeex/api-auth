@@ -1,8 +1,8 @@
 /* Database */
-import { DB } from "../services/db.js"
+import { DB } from "../../services/db.js"
 
 /* Tratamento de erros */
-import { badResquest, InternalServerError } from "../services/util.js"
+import { badResquest, InternalServerError } from "../../services/util.js"
 
 /* Verificar sé a requisição veio com os paramentros preenchidos. */
 function AuthInformationsValidate(req, res, next) {
@@ -23,7 +23,7 @@ function AuthInformationsValidate(req, res, next) {
 function AuthVerifyAccontExists(req, res, next) {
     const { email } = req.body
 
-    DB.query(`SELECT user_id FROM auth WHERE email = '${email}'`, (err, result) => {
+    DB.query(`SELECT user_id FROM users WHERE email = '${email}'`, (err, result) => {
         if(err)
         return InternalServerError(res, err)
 
