@@ -10,4 +10,4 @@ app.use(express.json())
 import auth from "./routers/auth/index.js"
 app.use('/auth', auth)
 
-app.listen(4000, () => console.log('Api rodando com sucesso! 🚀'))
+app.listen(process.env.PORT || 4000, () => console.log('Api rodando com sucesso! 🚀'))
