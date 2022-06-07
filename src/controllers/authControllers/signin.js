@@ -2,7 +2,7 @@
 import { DB } from "../../services/db.js"
 
 /* Tratamento de erros */
-import { badResquest, InternalServerError } from "../../services/util.js"
+import { Bad, InternalServerError } from "../../services/util.js"
 
 /* Tokens */
 import bcrypt from "bcryptjs"
@@ -17,11 +17,11 @@ function AuthValidatePassword(req, res, next) {
         return InternalServerError(res, err)
 
         if(result.length < 1)
-        return badResquest(res, "Conta não Existente.")
+        return Bad(res, "Conta não Existente.")
 
         const hashPassword = await bcrypt.compare(password, result[0].password)
         if (!hashPassword)
-        return badResquest(res, "Dados incorretos.")
+        return Bad(res, "Dados incorretos.")
 
         req.body.usertoken = GenerateJsonWebToken(result[0].password)
 

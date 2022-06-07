@@ -2,20 +2,20 @@
 import { DB } from "../../services/db.js"
 
 /* Tratamento de erros */
-import { badResquest, InternalServerError } from "../../services/util.js"
+import { Bad, InternalServerError } from "../../services/util.js"
 
 /* Verificar sé a requisição veio com os paramentros preenchidos. */
 function AuthInformationsValidate(req, res, next) {
     const { email, password } = req.body
 
     if(!email)
-    return badResquest(res, "Email Invalido.")
+    return Bad(res, "Email Invalido.")
 
     if(!password)
-    return badResquest(res, "Senha Invalida.")
+    return Bad(res, "Senha Invalida.")
 
     if(email.length >= 25)
-    return badResquest(res, "Email muito Extenso.")
+    return Bad(res, "Email muito Extenso.")
     next()
 }
 
@@ -28,7 +28,7 @@ function AuthVerifyAccontExists(req, res, next) {
         return InternalServerError(res, err)
 
         if(result.length > 0)
-        return badResquest(res, "Conta Existente")
+        return Bad(res, "Conta Existente")
         next()
     })
 }

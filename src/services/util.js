@@ -1,10 +1,10 @@
-function sucessResquest(res, message) {
+function Success(res, message) {
     res.status(200).json({
         message
     })
 }
 
-function badResquest(res, error) {
+function Bad(res, error) {
     res.status(400).json({
         error
     })
@@ -16,4 +16,4 @@ function InternalServerError(res, error) {
     })
 }
 
-export { badResquest, InternalServerError, sucessResquest }
+export { Bad, InternalServerError, Success }
