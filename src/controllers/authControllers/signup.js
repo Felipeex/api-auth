@@ -1,5 +1,5 @@
 /* Database */
-import { DB } from "../../services/db.js"
+import { users } from "../../services/db.js"
 
 /* Tratamento de erros */
 import { Bad, InternalServerError } from "../../services/util.js"
@@ -20,17 +20,18 @@ function AuthInformationsValidate(req, res, next) {
 }
 
 /* Verificar sé uma conta existe (Email). */
-function AuthVerifyAccontExists(req, res, next) {
+async function AuthVerifyAccontExists(req, res, next) {
     const { email } = req.body
 
-    DB.query(`SELECT user_id FROM users WHERE email = '${email}'`, (err, result) => {
-        if(err)
-        return InternalServerError(res, err)
-
-        if(result.length > 0)
+    try {
+        const usersByEmail = await users.find({ email: email})
+        if(usersByEmail.length > 0)
         return Bad(res, "Conta Existente")
+
         next()
-    })
+    } catch (err) {
+        InternalServerError(res, err)
+    }
 }
 
 export { AuthInformationsValidate, AuthVerifyAccontExists }

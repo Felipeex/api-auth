@@ -1,5 +1,5 @@
 /* Database */
-import { DB } from "../../services/db.js"
+import { users } from "../../services/db.js"
 
 /* Tratamento de erros */
 import { InternalServerError } from "../../services/util.js"
@@ -13,13 +13,14 @@ async function AuthInformationsInsert(req, res, next) {
     const hashPassword = await bcrypt.hash(password, 10)
 
     try {
-        DB.query(`INSERT INTO users (email, password) VALUES ('${email}', '${hashPassword}')`, (err, result) => {
-            if(err)
-            return InternalServerError(res, err)
-            next()
+        await users.create({
+            email,
+            password: hashPassword
         })
+
+        next()
     } catch (err) {
-        return InternalServerError(res, err)
+        InternalServerError(res, err)
     }
 }
 

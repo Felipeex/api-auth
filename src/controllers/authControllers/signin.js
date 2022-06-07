@@ -1,5 +1,5 @@
 /* Database */
-import { DB } from "../../services/db.js"
+import { users } from "../../services/db.js"
 
 /* Tratamento de erros */
 import { Bad, InternalServerError } from "../../services/util.js"
@@ -9,28 +9,29 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
 /* Validar login (Email, Senha). */
-function AuthValidatePassword(req, res, next) {
+async function AuthValidatePassword(req, res, next) {
     const { email, password } = req.body
 
-    DB.query(`SELECT user_id, password FROM users WHERE email = '${email}'`, async (err, result) => {
-        if(err)
-        return InternalServerError(res, err)
-
-        if(result.length < 1)
+    try {
+        const usersByEmail = await users.find({ email: email})
+        
+        if(usersByEmail.length < 1)
         return Bad(res, "Conta não Existente.")
 
-        const hashPassword = await bcrypt.compare(password, result[0].password)
+        const hashPassword = await bcrypt.compare(password, usersByEmail[0].password)
         if (!hashPassword)
         return Bad(res, "Dados incorretos.")
 
-        req.body.usertoken = GenerateJsonWebToken(result[0].password)
+        req.body.usertoken = GenerateJsonWebToken(usersByEmail[0].password)
 
         next()
-    })
+    } catch (err) {
+        InternalServerError(res, err)
+    }
 }
 
 function GenerateJsonWebToken(user_id) {
-    return jwt.sign({ user_id }, '732y487udhuiahd8UHS8SUAHD83Q4HE78shoi', { expiresIn: '1d' })
+    return jwt.sign({ user_id }, process.env.JWT__TOKEN, { expiresIn: '1d' })
 }
 
 export { AuthValidatePassword }

@@ -2,6 +2,9 @@
 import express from "express"
 const router = express.Router()
 
+/* imports */
+import 'dotenv/config'
+
 /* controllers */
 import { AuthValidatePassword } from "../../controllers/authControllers/signin.js"
 import { AuthInformationsValidate, AuthVerifyAccontExists } from "../../controllers/authControllers/signup.js"
