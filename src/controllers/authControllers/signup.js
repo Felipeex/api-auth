@@ -9,13 +9,13 @@ function AuthInformationsValidate(req, res, next) {
     const { email, password } = req.body
 
     if(!email)
-    return badResquest(res, "Email Invalido")
+    return badResquest(res, "Email Invalido.")
 
     if(!password)
-    return badResquest(res, "Senha Invalida")
+    return badResquest(res, "Senha Invalida.")
 
     if(email.length >= 25)
-    return badResquest(res, "Email muito extenso")
+    return badResquest(res, "Email muito Extenso.")
     next()
 }
 

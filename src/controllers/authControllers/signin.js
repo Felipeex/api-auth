@@ -17,11 +17,11 @@ function AuthValidatePassword(req, res, next) {
         return InternalServerError(res, err)
 
         if(result.length < 1)
-        return badResquest(res, "Conta não Existente")
+        return badResquest(res, "Conta não Existente.")
 
         const hashPassword = await bcrypt.compare(password, result[0].password)
         if (!hashPassword)
-        return badResquest(res, "Dados incorretos")
+        return badResquest(res, "Dados incorretos.")
 
         req.body.usertoken = GenerateJsonWebToken(result[0].password)
 
