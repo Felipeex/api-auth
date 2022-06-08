@@ -13,7 +13,7 @@ async function AuthValidatePassword(req, res, next) {
     const { email, password } = req.body
 
     try {
-        const usersByEmail = await users.find({ email: email})
+        const usersByEmail = await users.find({ email: email.toLowerCase()})
         
         if(usersByEmail.length < 1)
         return Bad(res, "Conta não Existente.")

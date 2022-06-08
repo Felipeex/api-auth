@@ -14,7 +14,7 @@ async function AuthInformationsInsert(req, res, next) {
 
     try {
         await users.create({
-            email,
+            email: email.toLowerCase(),
             password: hashPassword
         })
 
