@@ -1,4 +1,6 @@
+/* imports */
 import { Bad } from "../../services/util.js"
+import jwt from "jsonwebtoken"
 
 function JwtValidate(req, res, next) {
     const token = req.headers['authorization']
