@@ -11,7 +11,7 @@ import {
   AuthInformationsValidate,
   AuthVerifyAccontExists,
 } from "../../controllers/authControllers/signup.js";
-import { AuthInformationsInsert } from "../../models/authModels/signup.js";
+import { AuthInformationsInsert } from "../../controllers/authControllers/signup.js";
 import { Success } from "../../helpers/util.js";
 import { JwtValidate } from "../../controllers/authControllers/validateToken.js";
 
