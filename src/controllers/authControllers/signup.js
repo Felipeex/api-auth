@@ -4,6 +4,8 @@ import { users } from "../../models/users.js";
 /* Tratamento de erros */
 import { Bad, InternalServerError } from "../../helpers/util.js";
 
+import bcrypt from "bcryptjs";
+
 /* Verificar sé a requisição veio com os paramentros preenchidos. */
 function AuthInformationValidate(req, res, next) {
   const { email, password } = req.body;
