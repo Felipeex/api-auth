@@ -7,13 +7,17 @@ import "dotenv/config";
 
 /* controllers */
 import { AuthValidatePassword } from "../../controllers/authControllers/signin.js";
-import { AuthInformationsValidate, AuthVerifyAccontExists } from "../../controllers/authControllers/signup.js";
+import {
+  AuthInformationsValidate,
+  AuthVerifyAccontExists,
+} from "../../controllers/authControllers/signup.js";
 import { AuthInformationsInsert } from "../../models/authModels/signup.js";
-import { Success } from "../../services/util.js";
+import { Success } from "../../helpers/util.js";
 import { JwtValidate } from "../../controllers/authControllers/validateToken.js";
 
 /* routers */
-router.post("/signup",
+router.post(
+  "/signup",
   AuthInformationsValidate,
   AuthVerifyAccontExists,
   AuthInformationsInsert,
@@ -22,7 +26,8 @@ router.post("/signup",
   }
 );
 
-router.post("/signin",
+router.post(
+  "/signin",
   AuthInformationsValidate,
   AuthValidatePassword,
   async (req, res) => {
@@ -31,10 +36,8 @@ router.post("/signin",
   }
 );
 
-router.post("/validate-token", 
-  JwtValidate,
-  (req, res) => {
-  Success(res, "Logado com sucesso!" );
-})
+router.post("/validate-token", JwtValidate, (req, res) => {
+  Success(res, "Logado com sucesso!");
+});
 
 export default router;

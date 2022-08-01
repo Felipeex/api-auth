@@ -1,13 +1,15 @@
-import express from "express"
-import cors from "cors"
-const app = express()
+import express from "express";
+import cors from "cors";
+const app = express();
 
-app.use(cors())
+app.use(cors());
 
-app.use(express.json())
+app.use(express.json());
 
 /* routers */
-import auth from "./routers/auth/index.js"
-app.use('/auth', auth)
+import auth from "./routers/auth/index.js";
+app.use("/auth", auth);
 
-app.listen(process.env.PORT || 4000, () => console.log('Api rodando com sucesso! 🚀'))
+app.listen(process.env.PORT || 4000, () =>
+  console.log("Api rodando com sucesso! 🚀")
+);

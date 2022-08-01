@@ -1,8 +1,8 @@
 /* Database */
-import { users } from "../../services/db.js";
+import { users } from "../../models/users.js";
 
 /* Tratamento de erros */
-import { Bad, InternalServerError } from "../../services/util.js";
+import { Bad, InternalServerError } from "../../helpers/util.js";
 
 /* Verificar sé a requisição veio com os paramentros preenchidos. */
 function AuthInformationsValidate(req, res, next) {
@@ -30,4 +30,25 @@ async function AuthVerifyAccontExists(req, res, next) {
   }
 }
 
-export { AuthInformationsValidate, AuthVerifyAccontExists };
+/* Insertar Valores ao fazer o cadastro. */
+async function AuthInformationsInsert(req, res, next) {
+  const { email, password } = req.body;
+  const hashPassword = await bcrypt.hash(password, 10);
+
+  try {
+    await users.create({
+      email: email.toLowerCase(),
+      password: hashPassword,
+    });
+
+    next();
+  } catch (err) {
+    InternalServerError(res, err);
+  }
+}
+
+export {
+  AuthInformationsValidate,
+  AuthVerifyAccontExists,
+  AuthInformationsInsert,
+};
