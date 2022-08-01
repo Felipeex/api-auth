@@ -5,7 +5,7 @@ import { users } from "../../models/users.js";
 import { Bad, InternalServerError } from "../../helpers/util.js";
 
 /* Verificar sé a requisição veio com os paramentros preenchidos. */
-function AuthInformationsValidate(req, res, next) {
+function AuthInformationValidate(req, res, next) {
   const { email, password } = req.body;
 
   if (!email) return Bad(res, "Email Invalido.");
@@ -17,7 +17,7 @@ function AuthInformationsValidate(req, res, next) {
 }
 
 /* Verificar sé uma conta existe (Email). */
-async function AuthVerifyAccontExists(req, res, next) {
+async function AuthVerifyAccountExists(req, res, next) {
   const { email } = req.body;
 
   try {
@@ -31,7 +31,7 @@ async function AuthVerifyAccontExists(req, res, next) {
 }
 
 /* Insertar Valores ao fazer o cadastro. */
-async function AuthInformationsInsert(req, res, next) {
+async function AuthInformationInsert(req, res, next) {
   const { email, password } = req.body;
   const hashPassword = await bcrypt.hash(password, 10);
 
@@ -48,7 +48,7 @@ async function AuthInformationsInsert(req, res, next) {
 }
 
 export {
-  AuthInformationsValidate,
-  AuthVerifyAccontExists,
-  AuthInformationsInsert,
+  AuthInformationValidate,
+  AuthVerifyAccountExists,
+  AuthInformationInsert,
 };

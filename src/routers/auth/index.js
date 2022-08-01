@@ -9,19 +9,19 @@ import "../../database/database.js";
 /* controllers */
 import { AuthValidatePassword } from "../../controllers/authControllers/signin.js";
 import {
-  AuthInformationsValidate,
-  AuthVerifyAccontExists,
+  AuthInformationValidate,
+  AuthVerifyAccountExists,
 } from "../../controllers/authControllers/signup.js";
-import { AuthInformationsInsert } from "../../controllers/authControllers/signup.js";
+import { AuthInformationInsert } from "../../controllers/authControllers/signup.js";
 import { Success } from "../../helpers/util.js";
 import { JwtValidate } from "../../controllers/authControllers/validateToken.js";
 
 /* routers */
 router.post(
   "/signup",
-  AuthInformationsValidate,
-  AuthVerifyAccontExists,
-  AuthInformationsInsert,
+  AuthInformationValidate,
+  AuthVerifyAccountExists,
+  AuthInformationInsert,
   async (req, res) => {
     Success(res, "Conta criada com sucesso.");
   }
@@ -29,7 +29,7 @@ router.post(
 
 router.post(
   "/signin",
-  AuthInformationsValidate,
+  AuthInformationValidate,
   AuthValidatePassword,
   async (req, res) => {
     const { usertoken } = req.body;
