@@ -1,8 +1,8 @@
 /* Database */
-import { users } from "../../services/db.js";
+import { users } from "../../models/users.js";
 
 /* Tratamento de erros */
-import { Bad, InternalServerError } from "../../services/util.js";
+import { Bad, InternalServerError } from "../../helpers/util.js";
 
 /* Tokens */
 import bcrypt from "bcryptjs";
